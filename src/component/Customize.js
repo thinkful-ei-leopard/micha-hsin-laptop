@@ -1,13 +1,22 @@
 import React from 'react';
+import Feature from './Feature';
 
 
 export default function Customize(props){
-    const features = Object.keys(this.props.features).map((feature, idx) => {
+    const features = Object.keys(props.features).map((feature, idx) => {
     const featureHash = feature + '-' + idx;
-    return(
-        
-    <Feature options={props.features[feature]} featureHash={featureHash} feature={feature} selected={props.selected} handleChange={props.handleChange}  /> 
+
+  return(
+       <Feature feature={feature} features={props.features} selected={props.selected} updateFeature={props.updateFeature} featureHash={featureHash} />
      
-    )
-    }
+  )
+  })
+        
+    return(
+        <form className="main_form">
+            <h2>Customize your laptop</h2>
+            {features}
+        </form>
+    );
+
 }
